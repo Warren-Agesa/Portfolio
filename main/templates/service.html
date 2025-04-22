@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Services</h1>
+                        <p class="mb-0">
+                            Detail expertise in diagnosing and resolving hardware issues, including PC, laptop, and peripheral malfunctions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li class="current">Services</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+        <div class="container">
+            <div class="row gy-4">
+                {% for service in services %}
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
+                    <div class="service-item position-relative">
+                        <div class="icon">
+                            <i class="{{ service.icon }}"></i>
+                        </div>
+                            <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div><!-- End Service Item -->
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- /Services Section -->
+</main>
+{% endblock %}
