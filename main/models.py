@@ -67,7 +67,7 @@ class ContactMessage(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=255)
     message = models.TextField()
-    is_resolved = models.BooleanField(default=False)  # Admin can mark messages as resolved
+    is_resolved = models.BooleanField(default=False)  
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
