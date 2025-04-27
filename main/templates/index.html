@@ -18,18 +18,19 @@
                 <span class="typed-cursor typed-cursor--blink"></span>
             </p>
     
-            <div class="social-links">
-                <a href="#"><i class="bi bi-twitter-x"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
+            <div class="social-links d-flex justify-content-center">
+                {% for profile in social_profiles %}
+                    <a href="{{ profile.url }}" target="_blank" class="mx-2">
+                        <i class="{{ profile.icon_class }}"></i>
+                    </a>
+                {% endfor %}
             </div>
     
             <!-- Call-to-action buttons -->
             <div class="cta">
-                <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-primary">Hire Me</a>
-                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="portfolio" class="btn btn-primary">View My Work</a>
+                <a href="contact" class="btn btn-primary">Hire Me</a>
+                <a href="about" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </section>
