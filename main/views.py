@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Profile, Stat, Skill, Testimonial, Resume, Service, ContactMessage, PortfolioItem
+from .models import Profile, Stat, Skill, Testimonial, Resume, Service, ContactMessage, PortfolioItem, SocialProfile
 from .forms import ContactForm
 from django.contrib import messages
 
@@ -47,6 +47,7 @@ def portfolio_details(request, pk):
     return render(request, 'portfolio-details.html', {'item': item})
 
 def contact(request):
+    social_profiles = SocialProfile.objects.all()
     form = ContactForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         ContactMessage.objects.create(
@@ -58,4 +59,4 @@ def contact(request):
         messages.success(request, "Your message has been sent successfully!")
         return redirect("home")  
     
-    return render(request, "contact.html", {"form": form})
+    return render(request, "contact.html", {"form": form, 'social_profiles': social_profiles})

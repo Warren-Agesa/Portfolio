@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Stat, Skill, Testimonial, Resume, Education, Experience, Service, ContactMessage, PortfolioItem, PortfolioImage
+from .models import Profile, Stat, Skill, Testimonial, Resume, Education, Experience, Service, ContactMessage, PortfolioItem, PortfolioImage, SocialProfile
 from django.utils.html import format_html
 
 @admin.register(Profile)
@@ -81,3 +81,8 @@ class PortfolioImageAdmin(admin.ModelAdmin):
     def image_preview(self, obj):
         return format_html('<img src="{}" style="max-height: 100px;" />', obj.image.url)
     image_preview.short_description = 'Preview'
+
+
+@admin.register(SocialProfile)
+class SocialProfileAdmin(admin.ModelAdmin):
+    list_display = ('name', 'url', 'icon_class')

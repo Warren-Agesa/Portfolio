@@ -87,3 +87,12 @@ class PortfolioItem(models.Model):
 
 class PortfolioImage(models.Model):
     image = models.ImageField(upload_to='portfolio/')
+
+
+class SocialProfile(models.Model):
+    name = models.CharField(max_length=50)
+    url = models.URLField()
+    icon_class = models.CharField(max_length=100)  # like 'bi bi-twitter-x'
+
+    def __str__(self):
+        return self.name
