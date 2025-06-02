@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Projects - Karanja Portfolio{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">My Projects</h1>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description }}</p>
+                    {% if project.url %}
+                    <a href="{{ project.url }}" class="btn btn-primary" target="_blank">View Project</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center text-muted">No projects to display yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

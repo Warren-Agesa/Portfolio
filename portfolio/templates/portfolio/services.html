@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Services - Karanja Portfolio{% endblock %}
+
+{% block content %}
+<section class="services-hero-section py-5">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">How I Can Help You</h1>
+        <p class="lead mb-4">
+            I provide a range of services to help clients and employers achieve their digital goals, from full-stack web development to UI/UX design and technical consulting.
+        </p>
+    </div>
+</section>
+
+<section class="services-list-section py-4">
+    <div class="container">
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body">
+                        <i class="bi bi-{{ service.icon }} display-3 text-primary mb-3"></i>
+                        <h3 class="h5 fw-bold mb-2">{{ service.title }}</h3>
+                        <p class="text-muted mb-0">{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
