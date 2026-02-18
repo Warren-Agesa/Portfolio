@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
@@ -7,6 +8,13 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'portfolio.settings')
+=======
+import os
+import sys
+
+def main():
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Karanja.settings')
+>>>>>>> 8461a77a523cedacb8c334a4028e4df39a4a69df
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -17,6 +25,11 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+<<<<<<< HEAD
 
 if __name__ == '__main__':
     main()
+=======
+if __name__ == '__main__':
+    main()
+>>>>>>> 8461a77a523cedacb8c334a4028e4df39a4a69df

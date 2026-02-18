@@ -1,0 +1,135 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}About - Karanja Portfolio{% endblock %}
+
+{% block content %}
+<section class="about-hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <img 
+                    src="{% if hero and hero.image %}{{ hero.image.url }}{% else %}{% static 'portfolio/images/background.jpeg' %}{% endif %}" 
+                    alt="Warren Karanja"
+                    class="about-img-square"
+                >
+            </div>
+            <div class="col-lg-8">
+                <h1 class="fw-bold mb-2">Warren Karanja</h1>
+                <h2 class="h5 text-secondary mb-3">{{ about.profession }}</h2>
+                <p class="lead mb-3">
+                    {{ about.content|linebreaksbr }}
+                </p>
+                {% if about.location %}
+                <h5 class="mt-3 mb-1 text-uppercase text-muted" style="letter-spacing:1px;">Location</h5>
+                <p class="mb-2">{{ about.location }}</p>
+                {% endif %}
+                {% if about.mission %}
+                <h5 class="mt-3 mb-1 text-uppercase text-muted" style="letter-spacing:1px;">Mission</h5>
+                <p class="mb-2">{{ about.mission }}</p>
+                {% endif %}
+                <a href="{% url 'projects' %}" class="btn btn-primary rounded-pill px-4 me-2">View Projects</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-dark rounded-pill px-4">Contact Me</a>
+                {% if about.cv %}
+                <a href="{{ about.cv.url }}" class="btn btn-dark rounded-pill px-4 ms-2" download>
+                    <i class="bi bi-download me-1"></i> Download CV
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-personal-info-section py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="p-4 bg-white rounded-4 shadow-sm">
+                    <h3 class="h5 fw-bold mb-3">Personal Information</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><strong>Birthday:</strong> {{ personal_info.birthday }}</li>
+                                <li class="mb-2"><strong>Website:</strong> <a href="{{ personal_info.website }}" target="_blank">{{ personal_info.website }}</a></li>
+                                <li class="mb-2"><strong>Phone:</strong> {{ personal_info.phone }}</li>
+                                <li class="mb-2"><strong>City:</strong> {{ personal_info.city }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2"><strong>Age:</strong> {{ personal_info.age }}</li>
+                                <li class="mb-2"><strong>Degree:</strong> {{ personal_info.degree }}</li>
+                                <li class="mb-2"><strong>Email:</strong> <a href="mailto:{{ personal_info.email }}">{{ personal_info.email }}</a></li>
+                                <li class="mb-2"><strong>Freelance:</strong> {{ personal_info.freelance }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-details-section py-5">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-6">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                    <h3 class="h5 fw-bold mb-3">Skills & Tools</h3>
+                    <div class="row text-center">
+                        {% for skill in skills %}
+                        <div class="col-4 mb-2"><span class="badge bg-dark fs-6">{{ skill.name }}</span></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                    <h3 class="h5 fw-bold mb-3">Education & Certifications</h3>
+                    <ul class="mb-0">
+                        {% for edu in education %}
+                        <li>
+                            <strong>{{ edu.title }}</strong>
+                            {% if edu.institution %}, {{ edu.institution }}{% endif %}
+                            {% if edu.year %} ({{ edu.year }}){% endif %}
+                            {% if edu.description %}
+                            <div class="text-muted small mb-2">{{ edu.description }}</div>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100 mt-4">
+                    <h3 class="h5 fw-bold mb-3">Work Experience</h3>
+                    <ul class="mb-0">
+                        {% for work in work_experience %}
+                        <li class="mb-3">
+                            <strong>{{ work.job_title }}</strong>
+                            {% if work.company %} at {{ work.company }}{% endif %}
+                            {% if work.location %}, {{ work.location }}{% endif %}
+                            <br>
+                            <span class="text-muted small">{{ work.start_date }}{% if work.end_date %} - {{ work.end_date }}{% endif %}</span>
+                            {% if work.description %}
+                            <div class="text-muted small mb-2">{{ work.description }}</div>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100 mt-4">
+                    <h3 class="h5 fw-bold mb-3">Interests</h3>
+                    <ul class="mb-0 d-flex flex-wrap list-unstyled">
+                        {% for interest in interests %}
+                        <li class="me-3 mb-2"><span class="badge bg-secondary">{{ interest.name }}</span></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

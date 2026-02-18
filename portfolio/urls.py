@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 URL configuration for portfolio project.
 
@@ -21,3 +22,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
 ]
+=======
+from django.urls import path
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('projects/', views.projects, name='projects'),
+    path('services/', views.services, name='services'),
+    path('contact/', views.contact, name='contact'),
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 8461a77a523cedacb8c334a4028e4df39a4a69df
